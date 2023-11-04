@@ -1,7 +1,7 @@
 "use client";
 import { useDisclosure } from "@mantine/hooks";
 import { AppShell, Burger, Group, Skeleton, ScrollArea } from "@mantine/core";
-
+import { QueryButton } from "@/Components/QueryButton";
 export default function Home() {
   const [opened, { toggle }] = useDisclosure();
 
@@ -28,7 +28,9 @@ export default function Home() {
         </AppShell.Section>
         <AppShell.Section>This site is NOT endorsed by NTHU</AppShell.Section>
       </AppShell.Navbar>
-      <AppShell.Main>Main</AppShell.Main>
+      <AppShell.Main>
+        <QueryButton />
+      </AppShell.Main>
     </AppShell>
   );
 }
