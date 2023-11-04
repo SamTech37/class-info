@@ -1,12 +1,10 @@
 import { Button } from "@mantine/core";
 
 export function QueryButton() {
-  //need to fix CORS issue
   const fetchCourses = async () => {
-    const dataSourceURL = `https://www.ccxp.nthu.edu.tw/ccxp/INQUIRE/JH/OPENDATA/open_course_data.json`;
-
+    const source = `/api`;
     try {
-      const response = await fetch(dataSourceURL);
+      const response = await fetch(source);
 
       if (response.ok) {
         const data = await response.json();
