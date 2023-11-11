@@ -12,7 +12,6 @@ export async function GET(request: Request) {
     //next: { revalidate: 60 }, // Revalidate cache every 60 seconds
   });
   const courseListRaw: CourseRaw[] = await res.json();
-  console.log(courseListRaw.slice(0, 10));
 
   const courseList: Course[] = courseListRaw.map((item) => {
     return {
