@@ -1,7 +1,7 @@
 import { Button } from "@mantine/core";
-import { dumpCourses, getDepartmentCourses } from "@/firebase/client";
+import { getDepartmentCourses } from "@/firebase/client";
 import { useState } from "react";
-export function QueryButton() {
+export function QueryButton({ department }: { department: string }) {
   const [courseData, setCourseData] = useState<Course[]>([]);
   const fetchCourses = async () => {
     const source = `/api`;
@@ -21,25 +21,15 @@ export function QueryButton() {
       console.error("Error:", error);
     }
   };
-  const postCourses = async (courses: Course[]) => {
-    await dumpCourses(courses);
-    console.log(courses, "done");
+  const fetchCoursesFromFirebase = async () => {
+    const newCourses: any = await getDepartmentCourses(department);
+    setCourseData(newCourses);
+    console.log("successfully fetched courses from firebase");
   };
-
   return (
     <>
-      <Button onClick={async () => await fetchCourses()}>Query</Button>
-      <Button onClick={() => console.log(courseData.slice(200, 210))}>
-        Log
-      </Button>
-      <Button onClick={async () => await getDepartmentCourses("CHEM")}>
-        Get
-      </Button>
-      <Button
-        onClick={async () => await postCourses(courseData.slice(200, 210))}
-      >
-        Write
-      </Button>
+      <Button onClick={() => console.log(courseData)}>Log</Button>
+      <Button onClick={fetchCoursesFromFirebase}>Get</Button>
     </>
   );
 }
