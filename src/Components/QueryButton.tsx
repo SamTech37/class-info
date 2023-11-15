@@ -1,5 +1,4 @@
 import { Button } from "@mantine/core";
-import { getDepartmentCourses } from "@/firebase/client";
 import { useState } from "react";
 export function QueryButton({ department }: { department: string }) {
   const [courseData, setCourseData] = useState<Course[]>([]);
@@ -21,15 +20,14 @@ export function QueryButton({ department }: { department: string }) {
       console.error("Error:", error);
     }
   };
-  const fetchCoursesFromFirebase = async () => {
-    const newCourses: any = await getDepartmentCourses(department);
-    setCourseData(newCourses);
-    console.log("successfully fetched courses from firebase");
+  const fetchCoursesFromLowdb = async () => {
+    console.log("successfully fetched courses from db", courseData);
   };
+
   return (
     <>
       <Button onClick={() => console.log(courseData)}>Log</Button>
-      <Button onClick={fetchCoursesFromFirebase}>Get</Button>
+      <Button onClick={fetchCoursesFromLowdb}>Get</Button>
     </>
   );
 }
