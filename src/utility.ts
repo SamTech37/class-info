@@ -1,6 +1,3 @@
-import { JSONSyncPreset } from "lowdb/node";
-import courseList11210 from "./11210Courses.json";
-
 const fetchAllCoursesFromNTHU = async () => {
   const resourceURL = `https://www.ccxp.nthu.edu.tw/ccxp/INQUIRE/JH/OPENDATA/open_course_data.json`;
   const res = await fetch(resourceURL);
@@ -53,14 +50,4 @@ const fetchAllCoursesFromNTHU = async () => {
     };
   });
   return courseList;
-};
-
-// Read or create db.json
-const defaultData: Course[] = courseList11210 as Course[];
-const db = JSONSyncPreset<Course[]>("db.json", defaultData);
-
-export const getCoursesByDepartment = (department: string) => {
-  const courses = db.data.filter((course) => course.department === department);
-
-  return courses;
 };
