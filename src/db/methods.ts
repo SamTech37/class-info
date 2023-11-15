@@ -1,16 +1,16 @@
-//this fetches all 3010 courses
+import { JSONSyncPreset } from "lowdb/node";
+import courseList11210 from "./11210Courses.json";
 
-const dataSourceURL = `https://www.ccxp.nthu.edu.tw/ccxp/INQUIRE/JH/OPENDATA/open_course_data.json`;
-
-function getDepartment(courseID: string): string {
-  return courseID.replace(/[\d\s]/g, "");
-  //replace all digits and whitespaces
-}
-
-export async function GET(request: Request) {
-  const res = await fetch(dataSourceURL);
+const fetchAllCoursesFromNTHU = async () => {
+  const resourceURL = `https://www.ccxp.nthu.edu.tw/ccxp/INQUIRE/JH/OPENDATA/open_course_data.json`;
+  const res = await fetch(resourceURL);
+  function getDepartment(courseID: string): string {
+    return courseID.replace(/[\d\s]/g, "");
+    //replace all digits and whitespaces
+  }
   const courseListRaw: CourseRaw[] = await res.json();
 
+  //turn courseListRaw into Course[]
   const courseList: Course[] = courseListRaw.map((item) => {
     return {
       courseID: item.科號,
@@ -23,7 +23,7 @@ export async function GET(request: Request) {
       GEObject: item.通識對象,
       GECategory: item.通識類別,
       languageOfLecture: item.授課語言 === "中" ? "Chinese" : "English",
-      suspensionStatus: item.停開註記 === "" ? "" : item.停開註記,
+      suspensionStatus: item.停開註記,
 
       classroom: item.教室與上課時間
         .split("\n")
@@ -52,6 +52,15 @@ export async function GET(request: Request) {
       //remove the last empty line
     };
   });
+  return courseList;
+};
 
-  return Response.json(courseList);
-}
+// Read or create db.json
+const defaultData: Course[] = courseList11210 as Course[];
+const db = JSONSyncPreset<Course[]>("db.json", defaultData);
+
+export const getCoursesByDepartment = (department: string) => {
+  const courses = db.data.filter((course) => course.department === department);
+
+  return courses;
+};

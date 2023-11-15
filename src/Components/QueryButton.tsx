@@ -2,25 +2,10 @@ import { Button } from "@mantine/core";
 import { useState } from "react";
 export function QueryButton({ department }: { department: string }) {
   const [courseData, setCourseData] = useState<Course[]>([]);
-  const fetchCourses = async () => {
-    const source = `/api`;
-    try {
-      const response = await fetch(source);
 
-      if (response.ok) {
-        const courseList: Course[] = await response.json();
-        //console.log(courseList);
-
-        setCourseData(courseList);
-        console.log("success");
-      } else {
-        console.error("Failed to fetch data");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
   const fetchCoursesFromLowdb = async () => {
+    //const courseList = await getCoursesByDepartment(department);
+    //setCourseData(courseList);
     console.log("successfully fetched courses from db", courseData);
   };
 

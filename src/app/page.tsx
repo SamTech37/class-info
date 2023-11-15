@@ -1,14 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useDisclosure } from "@mantine/hooks";
-import {
-  AppShell,
-  Burger,
-  Group,
-  Skeleton,
-  ScrollArea,
-  Button,
-} from "@mantine/core";
+import { AppShell, Burger, Group, ScrollArea } from "@mantine/core";
 import jsonData from "../Components/Departments.json";
 
 export default function Home() {
