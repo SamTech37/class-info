@@ -5,7 +5,7 @@ export function QueryButton({ department }: { department: string }) {
   const [courseData, setCourseData] = useState<Course[]>([]);
 
   const fetchCoursesFromApi = async () => {
-    const response = await fetch(`/api/?department=${department}`);
+    const response = await fetch(`/api/11210?department=${department}`);
     const courseList = await response.json();
     setCourseData(courseList);
     console.log("successfully fetched courses from api");
