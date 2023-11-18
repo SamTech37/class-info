@@ -11,7 +11,12 @@ export default function Home() {
       <ScrollArea h="60vh" type="always">
         <Stack>
           {departments.map((dep, index) => (
-            <NavLink component={Link} href={dep} key={index} label={dep} />
+            <NavLink
+              component={Link}
+              href={`/departments/${dep}`}
+              key={index}
+              label={dep}
+            />
           ))}
         </Stack>
       </ScrollArea>
