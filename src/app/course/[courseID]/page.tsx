@@ -1,7 +1,8 @@
 //a server component that will fetch with the courseID
 //and list out all the detailed info of the course
-import { Stack } from "@mantine/core";
+
 import { notFound } from "next/navigation";
+import { CourseModal } from "@/Components/courseModal";
 
 const siteURL =
   process.env.NODE_ENV === "production"
@@ -28,9 +29,11 @@ export default async function CoursePage({
   params: { courseID: string };
 }) {
   const data: Course = await getCourseData(params.courseID);
+
   return (
-    <Stack>
-      <p>Course Name: {data.nameZH}</p>
-    </Stack>
+    <>
+      <p>{data.courseID}</p>
+      <CourseModal courseData={data} />
+    </>
   );
 }

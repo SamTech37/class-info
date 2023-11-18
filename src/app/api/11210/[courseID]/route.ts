@@ -12,6 +12,7 @@ export async function GET(
     (course) => course.courseID.replace(/\s/g, "") === courseID
   );
   if (!course) {
+    //return 404 if course not found
     return NextResponse.json({ message: "Course not found" }, { status: 404 });
   }
   return NextResponse.json(course);
