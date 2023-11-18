@@ -1,11 +1,12 @@
-"use client";
-import { useDisclosure } from "@mantine/hooks";
-import { SearchForm } from "@/Components/searchForm";
+//Home Page of the website
 
+"use client";
+import { SearchForm } from "@/Components/searchForm";
+import { Title } from "@mantine/core";
 export default function Home() {
   return (
     <>
-      Welcome
+      <Title mb="xs">搜尋課程</Title>
       <SearchForm />
     </>
   );

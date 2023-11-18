@@ -1,41 +1,66 @@
 //the form to search for courses
-//need a filter on the result page
 
-import { TextInput, Checkbox, Button, Group, Box } from "@mantine/core";
+"use client";
+import {
+  TextInput,
+  Button,
+  Group,
+  Box,
+  NativeSelect,
+  Autocomplete,
+} from "@mantine/core";
 import { useForm } from "@mantine/form";
+import jsonData from "./Departments.json";
+import { useRouter } from "next/navigation";
 
 export function SearchForm() {
-  const fetchCoursesFromApi = async () => {
-    //redirect to /search/{options}
-    const response = await fetch(`/api/11210?`);
-    const courseList = await response.json();
-    console.log("successfully fetched courses from api");
+  const router = useRouter();
+
+  const handleSubmit = () => {
+    //redirect to /search?{searchParams}
+    let newPath = "/search?";
+    for (const [key, value] of Object.entries(searchForm.values)) {
+      if (value != "") newPath += `${key}=${value}&`;
+    }
+    router.push(newPath);
   };
-  const form = useForm({
+  const searchForm = useForm({
     initialValues: {
-      email: "",
-      termsOfService: false,
+      semester: "11210",
+      courseName: "",
+      instructor: "",
+      department: "",
     },
 
-    validate: {
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
-    },
+    validate: {},
   });
+  const departmentList = jsonData;
 
   return (
-    <Box maw={340} mx="auto">
-      <form onSubmit={form.onSubmit((values) => console.log(values))}>
-        <TextInput
-          withAsterisk
-          label="Email"
-          placeholder="your@email.com"
-          {...form.getInputProps("email")}
+    <Box maw={400} mx="auto">
+      <form onSubmit={searchForm.onSubmit(() => handleSubmit())}>
+        <NativeSelect
+          disabled
+          label="學期"
+          data={[
+            { label: "112上", value: "11210" },
+            { label: "112下", value: "11220" },
+            { label: "112暑", value: "11230" },
+          ]}
+          {...searchForm.getInputProps("semester")}
         />
-
-        <Checkbox
-          mt="md"
-          label="I agree to sell my privacy"
-          {...form.getInputProps("termsOfService", { type: "checkbox" })}
+        <TextInput
+          label="課程名稱"
+          {...searchForm.getInputProps("courseName")}
+        />
+        <TextInput
+          label="授課教師"
+          {...searchForm.getInputProps("instructor")}
+        />
+        <Autocomplete
+          label="開課單位"
+          data={departmentList}
+          {...searchForm.getInputProps("department")}
         />
 
         <Group justify="flex-end" mt="md">

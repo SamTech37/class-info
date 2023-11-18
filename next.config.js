@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   compiler: {
-    removeConsole: true,
-    //removeConsole.log in production
+    removeConsole: {
+      exclude: ["error"],
+    },
+    //remove console.* except console.error
   },
 };
 
