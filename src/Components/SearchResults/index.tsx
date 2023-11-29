@@ -1,24 +1,59 @@
 "use client";
-import { Table } from "@mantine/core";
+import { Table, Button } from "@mantine/core";
 import Link from "next/link";
+import React from "react";
 //TODO: better UI for this
 //refactor change all courseData to courseList
 
+const tableHearder = [
+  "科號",
+  "課名",
+  "學分",
+  "老師",
+  "時間地點",
+  "人限/新生",
+  "更多",
+];
+//TODO: different interface for English users
 export function SearchResults({ courseList }: { courseList: Course[] }) {
+  const trimSpaces = (str: string) => str.replace(/\s+/g, "");
   const rows = courseList.map((course) => (
-    <Table.Tr key={course.courseID}>
+    <Table.Tr key={trimSpaces(course.courseID)}>
       <Table.Td>
-        <Link href={`/course/${course.courseID}`}>{course.courseID}</Link>
+        <Link href={`/course/${trimSpaces(course.courseID)}`}>
+          {trimSpaces(course.courseID)}
+        </Link>
       </Table.Td>
+      {/* TODO: change color if it's GE course*/}
       <Table.Td>{course.nameZH}</Table.Td>
+      <Table.Td>{course.credits}</Table.Td>
+      <Table.Td>
+        {course.instructorNamesZH.map((instructor, index) => (
+          <div key={index}>{instructor}</div>
+        ))}
+      </Table.Td>
+      <Table.Td>
+        {course.classTime.map((time, index) => (
+          <div key={index}>{`${time}@${course.classroom[index]}`}</div>
+        ))}
+      </Table.Td>
+      <Table.Td>
+        {`${course.enrollmentLimit ? course.enrollmentLimit : "無"} / ${
+          course.freshmanReservedSeats ? course.freshmanReservedSeats : "無"
+        }`}
+      </Table.Td>
+      <Table.Td>
+        <Button>詳細</Button>
+      </Table.Td>
     </Table.Tr>
   ));
   return (
-    <Table>
+    <Table stickyHeader highlightOnHover verticalSpacing="sm">
       <Table.Thead>
         <Table.Tr>
-          <Table.Th>courseID</Table.Th>
-          <Table.Th>courseName</Table.Th>
+          {tableHearder.map((header) => (
+            <Table.Th key={header}>{header}</Table.Th>
+          ))}
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody>{rows}</Table.Tbody>

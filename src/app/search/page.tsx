@@ -11,12 +11,15 @@ interface QueryParams {
   instructor?: string;
   department?: string;
 }
+const defaultSemester = "11210";
 const siteURL =
   process.env.NODE_ENV === "production"
     ? "http://nthuccc.vercel.app"
     : "http://localhost:3000";
 async function getCourseList(query: QueryParams) {
-  let resourceURL = `${siteURL}/api/${query.semester}?`;
+  let resourceURL = `${siteURL}/api/${
+    query.semester ? query.semester : defaultSemester
+  }?`;
   //for keys in query, add to resourceURL
   for (const [key, value] of Object.entries(query)) {
     if (value != "") resourceURL += `${key}=${value}&`;
