@@ -2,6 +2,9 @@
 //list out all the courses with important information
 //design https://ui.mantine.dev/component/table-sort/
 
+import { SearchResults } from "@/Components/SearchResults";
+
+//refactor this
 interface QueryParams {
   semester: string;
   courseName?: string;
@@ -34,9 +37,7 @@ export default async function SearchResultPage({
   return (
     <>
       <h1>{`Search Result of `}</h1>
-      {courseList.map((course) => (
-        <div key={course.courseID}>{course.nameZH}</div>
-      ))}
+      <SearchResults courseList={courseList} />
     </>
   );
 }

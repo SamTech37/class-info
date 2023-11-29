@@ -1,6 +1,7 @@
 "use client";
 import { Table } from "@mantine/core";
 
+//TODO: better UI for this
 export function CourseModal({ courseData }: { courseData: Course }) {
   const rows = Object.entries(courseData).map(([key, value]) => (
     <Table.Tr key={key}>

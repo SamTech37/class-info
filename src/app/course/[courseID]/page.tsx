@@ -2,7 +2,7 @@
 //and list out all the detailed info of the course
 
 import { notFound } from "next/navigation";
-import { CourseModal } from "@/Components/courseModal";
+import { CourseModal } from "@/Components/CourseModal";
 
 const siteURL =
   process.env.NODE_ENV === "production"
@@ -12,7 +12,6 @@ const siteURL =
 async function getCourseData(courseID: string) {
   //remove all whitespace
   const queryCourseID = courseID.replace(/\s|(%20)/g, "");
-  //console.error("💀💀💀courseID", queryCourseID);
   const res = await fetch(`${siteURL}/api/11210/${queryCourseID}`, {
     cache: "no-store",
   });
