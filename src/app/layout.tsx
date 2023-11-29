@@ -5,11 +5,7 @@ import "@mantine/core/styles.css";
 import { MantineProvider, ColorSchemeScript } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { AppShell, Burger, Group, ScrollArea, Skeleton } from "@mantine/core";
-
-// export const metadata = {
-//   title: "NTHUCCC",
-//   description: "A better NTHU Course Catalog Client experience",
-// };
+import NavLinks from "@/Components/NavLinks";
 
 export default function RootLayout({
   children,
@@ -58,13 +54,8 @@ export default function RootLayout({
               </Group>
             </AppShell.Header>
             <AppShell.Navbar p="md">
-              <AppShell.Section>Side Navigation</AppShell.Section>
-              <AppShell.Section grow my="md" component={ScrollArea}>
-                {Array(60)
-                  .fill(0)
-                  .map((_, index) => (
-                    <Skeleton key={index} h={28} mt="sm" animate={false} />
-                  ))}
+              <AppShell.Section grow my="md">
+                <NavLinks />
               </AppShell.Section>
               <AppShell.Section>
                 This site is NOT endorsed by NTHU
