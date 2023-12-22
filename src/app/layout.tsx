@@ -59,6 +59,8 @@ export default function RootLayout({
               </AppShell.Section>
               <AppShell.Section>
                 This site is NOT endorsed by NTHU
+                <br />
+                We provide the data &quot; as is &quot;
               </AppShell.Section>
             </AppShell.Navbar>
             <AppShell.Main>{children}</AppShell.Main>

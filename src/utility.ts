@@ -1,4 +1,4 @@
-const fetchAllCoursesFromNTHU = async () => {
+export const fetchAllCoursesFromNTHU = async () => {
   const resourceURL = `https://www.ccxp.nthu.edu.tw/ccxp/INQUIRE/JH/OPENDATA/open_course_data.json`;
   const res = await fetch(resourceURL);
   function getDepartment(courseID: string): string {

@@ -26,7 +26,7 @@ export function SearchForm() {
   };
   const searchForm = useForm({
     initialValues: {
-      semester: "11210",
+      semester: "11220",
       courseName: "",
       instructor: "",
       department: "",
@@ -40,7 +40,6 @@ export function SearchForm() {
     <Box maw={400} mx="auto">
       <form onSubmit={searchForm.onSubmit(() => handleSubmit())}>
         <NativeSelect
-          disabled
           label="學期"
           data={[
             { label: "112上", value: "11210" },

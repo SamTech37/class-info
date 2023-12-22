@@ -12,7 +12,8 @@ const siteURL =
 async function getCourseData(courseID: string) {
   //remove all whitespace
   const queryCourseID = courseID.replace(/\s|(%20)/g, "");
-  const res = await fetch(`${siteURL}/api/11210/${queryCourseID}`, {
+  const semester = queryCourseID.slice(0, 5);
+  const res = await fetch(`${siteURL}/api/${semester}/${queryCourseID}`, {
     cache: "no-store",
   });
   if (!res.ok) {
