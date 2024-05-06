@@ -44,7 +44,7 @@ export function SearchForm() {
           data={[
             { label: "112上", value: "11210" },
             { label: "112下", value: "11220" },
-            { label: "112暑", value: "11230" },
+            // { label: "112暑", value: "11230" },
           ]}
           {...searchForm.getInputProps("semester")}
         />

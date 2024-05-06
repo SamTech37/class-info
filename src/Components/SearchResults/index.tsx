@@ -41,7 +41,9 @@ export function SearchResults({ courseList }: { courseList: Course[] }) {
         }`}
       </Table.Td>
       <Table.Td>
-        <Button>詳細</Button>
+        <Link href={`/course/${trimSpaces(course.courseID)}`}>
+          <Button>詳細</Button>
+        </Link>
       </Table.Td>
     </Table.Tr>
   ));

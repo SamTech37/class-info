@@ -7,7 +7,6 @@ type Tabs = {
 };
 
 const tabs: Tabs[] = [
-  { label: "首頁", href: "/" },
   { label: "搜尋", href: "/" },
   { label: "查科號", href: "/course" },
   { label: "目錄", href: "/catalog" },
