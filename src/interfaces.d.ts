@@ -72,3 +72,16 @@ interface CourseRaw {
     "必選修說明": ""
 }
 */
+
+type Site = {
+  website: string;
+  author: string;
+  desc: string;
+  title: string;
+  ogImage?: string;
+  hashTag: string;
+  lightAndDarkMode: boolean;
+
+  //and other important configurations
+  caveats: string;
+};

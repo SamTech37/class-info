@@ -7,6 +7,8 @@ import { useDisclosure } from "@mantine/hooks";
 import { AppShell, Burger, Group, ScrollArea, Skeleton } from "@mantine/core";
 import NavLinks from "@/Components/NavLinks";
 
+import { SITE } from "@/config";
+
 export default function RootLayout({
   children,
 }: {
@@ -19,11 +21,8 @@ export default function RootLayout({
     <html lang="zh">
       <head>
         <ColorSchemeScript />
-        <title>NTHUCCC</title>
-        <meta
-          name="description"
-          content="A better NTHU Course Catalog Client experience"
-        />
+        <title>{SITE.title}</title>
+        <meta name="description" content={SITE.desc} />
       </head>
       <body>
         <MantineProvider defaultColorScheme="dark">
@@ -57,11 +56,7 @@ export default function RootLayout({
               <AppShell.Section grow my="md">
                 <NavLinks />
               </AppShell.Section>
-              <AppShell.Section>
-                This site is NOT endorsed by NTHU
-                <br />
-                We provide the data &quot; as is &quot;
-              </AppShell.Section>
+              <AppShell.Section>{SITE.caveats}</AppShell.Section>
             </AppShell.Navbar>
             <AppShell.Main>{children}</AppShell.Main>
           </AppShell>
