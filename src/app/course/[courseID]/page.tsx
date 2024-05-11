@@ -4,18 +4,13 @@
 
 import { notFound } from "next/navigation";
 import { CourseView } from "@/Components/CourseView";
-import { SITE } from "@/config";
-
-const siteURL =
-  process.env.NODE_ENV === "production"
-    ? SITE.websiteURL
-    : "http://localhost:3000";
+import { resourceURL } from "@/config";
 
 async function getCourseData(courseID: string) {
   //remove all whitespace
   const queryCourseID = courseID.replace(/\s|(%20)/g, "");
   const semester = queryCourseID.slice(0, 5);
-  const res = await fetch(`${siteURL}/api/${semester}/${queryCourseID}`, {
+  const res = await fetch(`${resourceURL}/api/${semester}/${queryCourseID}`, {
     cache: "no-store",
   });
   if (!res.ok) {

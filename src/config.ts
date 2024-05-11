@@ -11,3 +11,11 @@ export const SITE: Site = {
   lightAndDarkMode: false, // make it only darkmode
   caveats: `This site is NOT endorsed by NTHU.\nWe provide the data "as is".`,
 };
+
+export const resourceURL =
+  process.env.NODE_ENV === "production"
+    ? SITE.websiteURL
+    : "http://localhost:3000";
+
+export const defaultSemester = "11220";
+//change to 11310 when new data is available

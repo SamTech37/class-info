@@ -1,35 +1,25 @@
-//a server component that renders the result of searching courses
-//list out all the courses with important information
-//design https://ui.mantine.dev/component/table-sort/
-//the search result page
+// a server component that fetches & renders the result of searching courses
+// list out all the courses with key information
+// the search result page
+// for details, see course/[courseID]/page.tsx
 
 import GoBackButton from "@/Components/GoBackButton";
 import { SearchResults } from "@/Components/SearchResults";
-import { SITE } from "@/config";
+import { resourceURL, defaultSemester } from "@/config";
 
 //TODO: refactor this
-interface QueryParams {
-  semester: string;
-  courseName?: string;
-  instructor?: string;
-  department?: string;
-}
-const defaultSemester = "11210";
-const siteURL =
-  process.env.NODE_ENV === "production"
-    ? SITE.websiteURL
-    : "http://localhost:3000";
-async function getCourseList(query: QueryParams) {
-  let resourceURL = `${siteURL}/api/${
+
+async function getCourseList(query: QueryFilters) {
+  let dynamicQueryURL = `${resourceURL}/api/${
     query.semester ? query.semester : defaultSemester
   }?`;
   //for keys in query, add to resourceURL
   for (const [key, value] of Object.entries(query)) {
-    if (value != "") resourceURL += `${key}=${value}&`;
+    if (value != "") dynamicQueryURL += `${key}=${value}&`;
   }
-  console.error("fetching ", resourceURL);
+  console.error("fetching ", dynamicQueryURL);
 
-  const res = await fetch(resourceURL, { cache: "no-store" });
+  const res = await fetch(dynamicQueryURL, { cache: "no-store" });
   //need to add options to the url
   return res.json();
 }
@@ -37,7 +27,7 @@ async function getCourseList(query: QueryParams) {
 export default async function SearchResultPage({
   searchParams,
 }: {
-  searchParams: QueryParams;
+  searchParams: QueryFilters;
 }) {
   const courseList: Course[] = await getCourseList(searchParams);
   return (
