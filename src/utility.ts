@@ -51,3 +51,60 @@ export const fetchAllCoursesFromNTHU = async () => {
   });
   return courseList;
 };
+
+//TODO: add more fields
+//unify this type with interface QueryParams
+type QueryFilters = {
+  department?: string | null;
+  instructor?: string | null;
+  courseName?: string | null;
+  classTime?: string | null;
+  languageOfInstruction?: string | null;
+};
+
+export function isFiltersMatched(
+  course: Course,
+  filters: QueryFilters
+): boolean {
+  //match department
+  if (filters.department && course.department !== filters.department) {
+    return false;
+  }
+
+  //match instructors' names with the query keyword
+  if (filters.instructor) {
+    const instructorIncluded =
+      course.instructorNamesEN.some((instructor: string) =>
+        instructor.includes(filters.instructor as string)
+      ) ||
+      course.instructorNamesZH.some((instructor: string) =>
+        instructor.includes(filters.instructor as string)
+      );
+
+    if (!instructorIncluded) {
+      return false;
+    }
+  }
+
+  // match course name with the query keyword
+  if (filters.courseName) {
+    const courseNameIncluded =
+      course.nameEN.toLowerCase().includes(filters.courseName.toLowerCase()) ||
+      course.nameZH.toLowerCase().includes(filters.courseName.toLowerCase());
+
+    if (!courseNameIncluded) {
+      return false;
+    }
+  }
+
+  //match language of instruction with the query language
+  if (
+    filters.languageOfInstruction &&
+    course.languageOfLecture !== filters.languageOfInstruction
+  )
+    return false;
+
+  //TODO: match class time with the query keyword
+
+  return true;
+}
