@@ -1,4 +1,5 @@
 //general config of the site
+//and some data that is used in multiple places
 
 export const SITE: Site = {
   // replace this with your deployed domain
@@ -19,3 +20,28 @@ export const resourceURL =
 
 export const defaultSemester = "11220";
 //change to 11310 when new data is available
+
+export const availableSemesters = [
+  { label: "112上", value: "11210" },
+  { label: "112下", value: "11220" },
+  // { label: "112暑", value: "11230" },
+  // { label: "113上", value: "11310" },
+];
+
+type linkFromNTHU = {
+  URL: string;
+  title: string;
+};
+type refLinks = {
+  [key: string]: linkFromNTHU;
+};
+export const referenceLinks: refLinks = {
+  courseIDRef: {
+    URL: "https://curricul.site.nthu.edu.tw/p/406-1208-166583,r9680.php",
+    title: "認識清大科號",
+  },
+  buildingCodes: {
+    URL: "https://curricul.site.nthu.edu.tw/p/406-1208-50862,r8507.php",
+    title: "館舍代碼",
+  },
+};

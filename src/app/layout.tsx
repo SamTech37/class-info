@@ -4,8 +4,9 @@
 import "@mantine/core/styles.css";
 import { MantineProvider, ColorSchemeScript } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { AppShell, Burger, Group, ScrollArea, Skeleton } from "@mantine/core";
+import { AppShell, Burger, Group, Badge } from "@mantine/core";
 import NavLinks from "@/Components/NavLinks";
+import Link from "next/link";
 
 import { SITE } from "@/config";
 
@@ -49,7 +50,9 @@ export default function RootLayout({
                   visibleFrom="sm"
                   size="sm"
                 />
-                NTHUCCC
+                <Link href="/">
+                  <Badge size="lg">{SITE.title}</Badge>
+                </Link>
               </Group>
             </AppShell.Header>
             <AppShell.Navbar p="md">

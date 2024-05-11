@@ -12,6 +12,7 @@ import {
 import { useForm } from "@mantine/form";
 import jsonData from "./Departments.json";
 import { useRouter } from "next/navigation";
+import { availableSemesters } from "@/config";
 
 export function SearchForm() {
   const router = useRouter();
@@ -43,12 +44,7 @@ export function SearchForm() {
       <form onSubmit={searchForm.onSubmit(() => handleSubmit())}>
         <NativeSelect
           label="學期"
-          data={[
-            { label: "112上", value: "11210" },
-            { label: "112下", value: "11220" },
-            // { label: "112暑", value: "11230" },
-            // { label: "113上", value: "11310" },
-          ]}
+          data={availableSemesters}
           {...searchForm.getInputProps("semester")}
         />
         <NativeSelect

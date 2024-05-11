@@ -1,4 +1,5 @@
 //Home Page of the website
+//which is also the search page
 
 "use client";
 import { SearchForm } from "@/Components/searchForm";
