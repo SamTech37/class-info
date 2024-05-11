@@ -2,7 +2,7 @@
 //and list out all the detailed info of the course
 
 import { notFound } from "next/navigation";
-import { CourseModal } from "@/Components/CourseModal";
+import { CourseView } from "@/Components/CourseView";
 
 const siteURL =
   process.env.NODE_ENV === "production"
@@ -33,7 +33,7 @@ export default async function CoursePage({
   return (
     <>
       <p>{data.courseID}</p>
-      <CourseModal courseData={data} />
+      <CourseView courseData={data} />
     </>
   );
 }
