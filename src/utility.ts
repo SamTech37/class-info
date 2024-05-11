@@ -52,16 +52,6 @@ export const fetchAllCoursesFromNTHU = async () => {
   return courseList;
 };
 
-//TODO: add more fields
-//unify this type with interface QueryParams
-type QueryFilters = {
-  department?: string | null;
-  instructor?: string | null;
-  courseName?: string | null;
-  classTime?: string | null;
-  languageOfInstruction?: string | null;
-};
-
 export function isFiltersMatched(
   course: Course,
   filters: QueryFilters
@@ -98,11 +88,12 @@ export function isFiltersMatched(
   }
 
   //match language of instruction with the query language
-  if (
-    filters.languageOfInstruction &&
-    course.languageOfLecture !== filters.languageOfInstruction
-  )
-    return false;
+  if (filters.lang) {
+    let lang = filters.lang === "EN" ? "English" : "Chinese";
+    if (course.languageOfLecture !== lang) {
+      return false;
+    }
+  }
 
   //TODO: match class time with the query keyword
 

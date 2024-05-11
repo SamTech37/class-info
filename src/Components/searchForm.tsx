@@ -24,14 +24,16 @@ export function SearchForm() {
     }
     router.push(newPath);
   };
-  const searchForm = useForm({
-    initialValues: {
-      semester: "11220",
-      courseName: "",
-      instructor: "",
-      department: "",
-    },
 
+  const initialValues: QueryFilters = {
+    semester: "11220",
+    courseName: "",
+    instructor: "",
+    department: "",
+    lang: "",
+  };
+  const searchForm = useForm({
+    initialValues,
     validate: {},
   });
   const departmentList = jsonData;
@@ -45,8 +47,18 @@ export function SearchForm() {
             { label: "112上", value: "11210" },
             { label: "112下", value: "11220" },
             // { label: "112暑", value: "11230" },
+            // { label: "113上", value: "11310" },
           ]}
           {...searchForm.getInputProps("semester")}
+        />
+        <NativeSelect
+          label="授課語言"
+          data={[
+            { label: "不限", value: "" },
+            { label: "中文", value: "ZH" },
+            { label: "English", value: "EN" },
+          ]}
+          {...searchForm.getInputProps("lang")}
         />
         <TextInput
           label="課程名稱"

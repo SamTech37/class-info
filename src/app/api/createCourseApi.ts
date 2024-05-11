@@ -3,14 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { JSONSyncPreset } from "lowdb/node";
 import { isFiltersMatched } from "@/utility";
 
-type QueryFilters = {
-  department?: string | null;
-  instructor?: string | null;
-  courseName?: string | null;
-  classTime?: string | null;
-  languageOfInstruction?: string | null;
-};
-
 // a generic function to create course API according to
 // course data of different semesters
 export function createCourseListApiBySemester(courseListJson: any[]) {
@@ -24,7 +16,7 @@ export function createCourseListApiBySemester(courseListJson: any[]) {
       instructor: searchParams.get("instructor")?.toUpperCase(),
       courseName: searchParams.get("courseName"),
       classTime: searchParams.get("classTime"),
-      languageOfInstruction: searchParams.get("lang")?.toUpperCase(),
+      lang: searchParams.get("lang")?.toUpperCase() as "EN" | "ZH" | undefined,
     };
     console.error("filters of query", filters);
 

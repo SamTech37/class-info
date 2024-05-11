@@ -85,3 +85,13 @@ type Site = {
   //and other important configurations
   caveats: string;
 };
+
+type QueryFilters = {
+  semester?: string | null;
+  department?: string | null;
+  instructor?: string | null;
+  courseName?: string | null;
+  classTime?: string | null;
+  lang?: "EN" | "ZH" | "" | null;
+  //English, Chinese, or not specified
+};
