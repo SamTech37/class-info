@@ -3,6 +3,7 @@
 //design https://ui.mantine.dev/component/table-sort/
 //the search result page
 
+import GoBackButton from "@/Components/GoBackButton";
 import { SearchResults } from "@/Components/SearchResults";
 import { SITE } from "@/config";
 
@@ -41,6 +42,7 @@ export default async function SearchResultPage({
   const courseList: Course[] = await getCourseList(searchParams);
   return (
     <>
+      <GoBackButton />
       <h1>{`Search Result of `}</h1>
       <SearchResults courseList={courseList} />
     </>

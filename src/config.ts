@@ -1,3 +1,5 @@
+//general config of the site
+
 export const SITE: Site = {
   // replace this with your deployed domain
   websiteURL: "https://nthuccc.vercel.app",

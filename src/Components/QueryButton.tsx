@@ -1,3 +1,6 @@
+//a component for testing
+//fetches courses from the api and logs them to the console
+
 import { Button } from "@mantine/core";
 import { useState } from "react";
 

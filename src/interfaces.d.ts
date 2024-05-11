@@ -49,7 +49,7 @@ interface CourseRaw {
 }
 
 /*
-
+an example of a CourseRaw object:
 {
     "科號": "11210AES 470100",
     "課程中文名稱": "永續環境治理的設計思考",
