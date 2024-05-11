@@ -1,8 +1,10 @@
+// Display search results in a table
+
 "use client";
-import { Table, Button } from "@mantine/core";
+import { Table, Button, Badge } from "@mantine/core";
 import Link from "next/link";
 import React from "react";
-
+import { GEObjectColors } from "@/config";
 const tableHearder = [
   "科號",
   "課名",
@@ -23,7 +25,9 @@ export function SearchResults({ courseList }: { courseList: Course[] }) {
         </Link>
       </Table.Td>
       {/* TODO: change color if it's GE course*/}
-      <Table.Td>{course.nameZH}</Table.Td>
+      <Table.Td>
+        <CourseNameBadge course={course} />
+      </Table.Td>
       <Table.Td>{course.credits}</Table.Td>
       <Table.Td>
         {course.instructorNamesZH.map((instructor, index) => (
@@ -116,4 +120,29 @@ export function SearchResultsEN({ courseList }: { courseList: Course[] }) {
       <Table.Tbody>{rows}</Table.Tbody>
     </Table>
   );
+}
+
+function CourseNameBadge({ course }: { course: Course }) {
+  switch (course.GEObject) {
+    case "*1":
+      return (
+        <Badge size="xl" variant="gradient" gradient={GEObjectColors.type1}>
+          {course.nameZH}
+        </Badge>
+      );
+    case "*3":
+      return (
+        <Badge size="xl" variant="gradient" gradient={GEObjectColors.type3}>
+          {course.nameZH}
+        </Badge>
+      );
+    case "*7":
+      return (
+        <Badge size="xl" variant="gradient" gradient={GEObjectColors.type7}>
+          {course.nameZH}
+        </Badge>
+      );
+    default:
+      return <>{course.nameZH}</>;
+  }
 }

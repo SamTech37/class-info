@@ -44,4 +44,14 @@ export const referenceLinks: refLinks = {
     URL: "https://curricul.site.nthu.edu.tw/p/406-1208-50862,r8507.php",
     title: "館舍代碼",
   },
+  GEObjectRef: {
+    URL: "https://curricul.site.nthu.edu.tw/p/404-1208-11133.php",
+    title: "通識課程選課對象",
+  },
+};
+
+export const GEObjectColors = {
+  type1: { from: "violet", to: "yellow", deg: 90 },
+  type3: { from: "cyan", to: "green", deg: 90 },
+  type7: { from: "red", to: "cyan", deg: 90 },
 };
