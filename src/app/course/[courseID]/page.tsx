@@ -1,12 +1,14 @@
 //a server component that will fetch with the courseID
 //and list out all the detailed info of the course
+//the courseID page
 
 import { notFound } from "next/navigation";
 import { CourseView } from "@/Components/CourseView";
+import { SITE } from "@/config";
 
 const siteURL =
   process.env.NODE_ENV === "production"
-    ? "http://nthuccc.vercel.app"
+    ? SITE.websiteURL
     : "http://localhost:3000";
 
 async function getCourseData(courseID: string) {
@@ -30,10 +32,5 @@ export default async function CoursePage({
 }) {
   const data: Course = await getCourseData(params.courseID);
 
-  return (
-    <>
-      <p>{data.courseID}</p>
-      <CourseView courseData={data} />
-    </>
-  );
+  return <CourseView courseData={data} />;
 }

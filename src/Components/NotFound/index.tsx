@@ -1,3 +1,5 @@
+//a 404 not found page
+
 import { Container, Title, Text, Button, Group } from "@mantine/core";
 import { Illustration } from "./Illustration";
 import classes from "./NothingFoundBackground.module.css";

@@ -74,7 +74,7 @@ interface CourseRaw {
 */
 
 type Site = {
-  website: string;
+  websiteURL: string;
   author: string;
   desc: string;
   title: string;

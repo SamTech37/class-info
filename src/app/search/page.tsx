@@ -1,10 +1,12 @@
 //a server component that renders the result of searching courses
 //list out all the courses with important information
 //design https://ui.mantine.dev/component/table-sort/
+//the search result page
 
 import { SearchResults } from "@/Components/SearchResults";
+import { SITE } from "@/config";
 
-//refactor this
+//TODO: refactor this
 interface QueryParams {
   semester: string;
   courseName?: string;
@@ -14,7 +16,7 @@ interface QueryParams {
 const defaultSemester = "11210";
 const siteURL =
   process.env.NODE_ENV === "production"
-    ? "http://nthuccc.vercel.app"
+    ? SITE.websiteURL
     : "http://localhost:3000";
 async function getCourseList(query: QueryParams) {
   let resourceURL = `${siteURL}/api/${

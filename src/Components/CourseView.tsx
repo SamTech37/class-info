@@ -1,5 +1,6 @@
 "use client";
 import { Table } from "@mantine/core";
+import GoBackButton from "./GoBackButton";
 
 // TODO: better UI for this
 export function CourseView({ courseData }: { courseData: Course }) {
@@ -10,14 +11,17 @@ export function CourseView({ courseData }: { courseData: Course }) {
     </Table.Tr>
   ));
   return (
-    <Table>
-      <Table.Thead>
-        <Table.Tr>
-          <Table.Th>Key</Table.Th>
-          <Table.Th>Value</Table.Th>
-        </Table.Tr>
-      </Table.Thead>
-      <Table.Tbody>{rows}</Table.Tbody>
-    </Table>
+    <div>
+      <GoBackButton />
+      <Table>
+        <Table.Thead>
+          <Table.Tr>
+            <Table.Th>Key</Table.Th>
+            <Table.Th>Value</Table.Th>
+          </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>{rows}</Table.Tbody>
+      </Table>
+    </div>
   );
 }

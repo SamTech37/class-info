@@ -1,6 +1,6 @@
 export const SITE: Site = {
   // replace this with your deployed domain
-  website: "https://nthuccc.vercel.app",
+  websiteURL: "https://nthuccc.vercel.app",
   author: "S.K.",
   desc: "A better NTHU Course Catalog Client experience",
   title: "NTHUCCC",

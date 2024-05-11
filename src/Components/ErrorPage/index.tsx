@@ -1,3 +1,5 @@
+//a 500 server error page
+
 "use client";
 import Link from "next/link";
 import { Title, Text, Button, Container, Group } from "@mantine/core";
