@@ -10,6 +10,7 @@ export function createCourseListApiBySemester(courseListJson: any[]) {
   const db = JSONSyncPreset<Course[]>("db.json", defaultData);
 
   return async function GET(request: NextRequest) {
+    // the actual GET request handler
     const searchParams = request.nextUrl.searchParams;
     const filters: QueryFilters = {
       department: searchParams.get("department")?.toUpperCase(),
@@ -32,11 +33,14 @@ export function createCourseIdApiBySemester(courseListJson: any[]) {
   const defaultData: Course[] = courseListJson as Course[];
   const db = JSONSyncPreset<Course[]>("db.json", defaultData);
 
+  // the actual GET request handler
   return async function GET(
     request: NextRequest,
     context: { params: { courseID: string } }
   ) {
+    //trim whitespaces and convert to uppercase
     const courseID = context.params.courseID.replace(/\s/g, "").toUpperCase();
+    //find the course matching query
     const course = db.data.find(
       (course) => course.courseID.replace(/\s/g, "") === courseID
     );

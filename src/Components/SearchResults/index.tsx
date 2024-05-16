@@ -14,7 +14,6 @@ const tableHearder = [
   "人限|新生",
   "更多資訊",
 ];
-//TODO: different interface for English users
 export function SearchResults({ courseList }: { courseList: Course[] }) {
   const trimSpaces = (str: string) => str.replace(/\s+/g, "");
   const rows = courseList.map((course) => (
@@ -24,9 +23,12 @@ export function SearchResults({ courseList }: { courseList: Course[] }) {
           {trimSpaces(course.courseID)}
         </Link>
       </Table.Td>
-      {/* TODO: change color if it's GE course*/}
+
+      {/*change color if it's GE course*/}
       <Table.Td>
-        <CourseNameBadge course={course} />
+        <CourseNameBadge GEObject={course.GEObject}>
+          {course.nameZH}
+        </CourseNameBadge>
       </Table.Td>
       <Table.Td>{course.credits}</Table.Td>
       <Table.Td>
@@ -75,7 +77,7 @@ const tableHearderEN = [
   "Limit|Freshman reserved",
   "More Info",
 ];
-
+//TODO: different interface for English users
 export function SearchResultsEN({ courseList }: { courseList: Course[] }) {
   const trimSpaces = (str: string) => str.replace(/\s+/g, "");
   const rows = courseList.map((course) => (
@@ -85,8 +87,12 @@ export function SearchResultsEN({ courseList }: { courseList: Course[] }) {
           {trimSpaces(course.courseID)}
         </Link>
       </Table.Td>
-      {/* TODO: change color if it's GE course*/}
-      <Table.Td>{course.nameEN}</Table.Td>
+
+      <Table.Td>
+        <CourseNameBadge GEObject={course.GEObject}>
+          {course.nameEN}
+        </CourseNameBadge>
+      </Table.Td>
       <Table.Td>{course.credits}</Table.Td>
       <Table.Td>
         {course.instructorNamesEN.map((instructor, index) => (
@@ -122,27 +128,33 @@ export function SearchResultsEN({ courseList }: { courseList: Course[] }) {
   );
 }
 
-function CourseNameBadge({ course }: { course: Course }) {
-  switch (course.GEObject) {
+function CourseNameBadge({
+  GEObject,
+  children,
+}: {
+  GEObject: string;
+  children: React.ReactNode;
+}) {
+  switch (GEObject) {
     case "*1":
       return (
         <Badge size="xl" variant="gradient" gradient={GEObjectColors.type1}>
-          {course.nameZH}
+          {children}
         </Badge>
       );
     case "*3":
       return (
         <Badge size="xl" variant="gradient" gradient={GEObjectColors.type3}>
-          {course.nameZH}
+          {children}
         </Badge>
       );
     case "*7":
       return (
         <Badge size="xl" variant="gradient" gradient={GEObjectColors.type7}>
-          {course.nameZH}
+          {children}
         </Badge>
       );
     default:
-      return <>{course.nameZH}</>;
+      return <> {children}</>;
   }
 }

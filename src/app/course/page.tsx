@@ -46,7 +46,7 @@ function CourseIDForm() {
         />
         <TextInput
           label="科號"
-          description="不用輸入學期。如：CS135501"
+          description="不用輸入學期。如：CS135601"
           {...courseIDForm.getInputProps("courseID")}
         />
 
