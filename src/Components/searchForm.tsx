@@ -8,17 +8,23 @@ import {
   Box,
   NativeSelect,
   Autocomplete,
+  LoadingOverlay,
 } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+
 import { useForm } from "@mantine/form";
 import jsonData from "./Departments.json";
 import { useRouter } from "next/navigation";
 import { availableSemesters, defaultSemester } from "@/config";
 
 export function SearchForm() {
+  const [isLoading, { toggle }] = useDisclosure(false);
+
   const router = useRouter();
 
   const handleSubmit = () => {
     //redirect to /search?{searchParams}
+    toggle();
     let newPath = "/search?";
     for (const [key, value] of Object.entries(searchForm.values)) {
       if (value != "") newPath += `${key}=${value}&`;
@@ -40,7 +46,13 @@ export function SearchForm() {
   const departmentList = jsonData;
 
   return (
-    <Box maw={400} mx="auto">
+    <Box maw={400} mx="auto" pos="relative">
+      <LoadingOverlay
+        visible={isLoading}
+        zIndex={1000}
+        overlayProps={{ radius: "xs", blur: 2 }}
+      />
+
       <form onSubmit={searchForm.onSubmit(() => handleSubmit())}>
         <NativeSelect
           label="學期"

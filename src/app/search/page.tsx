@@ -6,9 +6,9 @@
 import GoBackButton from "@/Components/GoBackButton";
 import { SearchResults } from "@/Components/SearchResults";
 import { resourceURL, defaultSemester } from "@/config";
+import { Divider } from "@mantine/core";
 
-//TODO: refactor this
-
+//TODO: refactor this mess
 async function getCourseList(query: QueryFilters) {
   let dynamicQueryURL = `${resourceURL}/api/${
     query.semester ? query.semester : defaultSemester
@@ -35,6 +35,8 @@ export default async function SearchResultPage({
       <GoBackButton />
       <h1>{`Search Result of `}</h1>
       <SearchResults courseList={courseList} />
+      <Divider my="md" />
+      <GoBackButton />
     </>
   );
 }
