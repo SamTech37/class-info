@@ -18,15 +18,16 @@ export const resourceURL =
     ? SITE.websiteURL
     : "http://localhost:3000";
 
-export const defaultSemester = "11220";
-//change to 11310 when new data is available
-
+//TODO: change to 11320 when new data is available
 export const availableSemesters = [
   { label: "112上", value: "11210" },
   { label: "112下", value: "11220" },
   // { label: "112暑", value: "11230" },
-  // { label: "113上", value: "11310" },
+  { label: "113上", value: "11310" },
+  //  { label: "113下", value: "11320" },
 ];
+export const defaultSemester =
+  availableSemesters[availableSemesters.length - 1].value;
 
 type linkFromNTHU = {
   URL: string;

@@ -1,6 +1,9 @@
 export const fetchAllCoursesFromNTHU = async () => {
   const resourceURL = `https://www.ccxp.nthu.edu.tw/ccxp/INQUIRE/JH/OPENDATA/open_course_data.json`;
-  const res = await fetch(resourceURL);
+  console.log(resourceURL);
+
+  const res = await fetch(resourceURL, {});
+
   function getDepartment(courseID: string): string {
     return courseID.replace(/[\d\s]/g, "");
     //replace all digits and whitespaces
@@ -49,6 +52,8 @@ export const fetchAllCoursesFromNTHU = async () => {
       //remove the last empty line
     };
   });
+  console.log(courseList);
+
   return courseList;
 };
 

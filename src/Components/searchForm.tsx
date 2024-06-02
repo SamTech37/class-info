@@ -12,7 +12,7 @@ import {
 import { useForm } from "@mantine/form";
 import jsonData from "./Departments.json";
 import { useRouter } from "next/navigation";
-import { availableSemesters } from "@/config";
+import { availableSemesters, defaultSemester } from "@/config";
 
 export function SearchForm() {
   const router = useRouter();
@@ -27,7 +27,7 @@ export function SearchForm() {
   };
 
   const initialValues: QueryFilters = {
-    semester: "11220",
+    semester: defaultSemester,
     courseName: "",
     instructor: "",
     department: "",
