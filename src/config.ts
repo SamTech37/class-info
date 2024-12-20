@@ -18,13 +18,19 @@ export const resourceURL =
     ? SITE.websiteURL
     : "http://localhost:3000";
 
-//TODO: change to 11320 when new data is available
+//[TODO]: uncomment the options when new data is available
 export const availableSemesters = [
   { label: "112上", value: "11210" },
   { label: "112下", value: "11220" },
   // { label: "112暑", value: "11230" },
   { label: "113上", value: "11310" },
-  //  { label: "113下", value: "11320" },
+  { label: "113下", value: "11320" },
+  // { label: "113暑", value: "11330" },
+  // { label: "114上", value: "11410" },
+  // { label: "114下", value: "11420" },
+  // { label: "114暑", value: "11430" },
+  // { label: "115上", value: "11510" },
+  // { label: "115下", value: "11520" },
 ];
 export const defaultSemester =
   availableSemesters[availableSemesters.length - 1].value;
