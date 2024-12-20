@@ -4,7 +4,7 @@
 import { Button } from "@mantine/core";
 import { useState } from "react";
 
-export function QueryButton({ department }: { department: string }) {
+export function QueryTestButton({ department }: { department: string }) {
   const [courseData, setCourseData] = useState<Course[]>([]);
 
   const fetchCoursesFromApi = async () => {

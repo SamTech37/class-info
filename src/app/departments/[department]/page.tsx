@@ -1,5 +1,5 @@
 "use client";
-import { QueryButton } from "@/Components/QueryButton";
+import { QueryTestButton } from "@/Components/QueryTestingButton";
 
 export default function Department({
   params,
@@ -9,7 +9,7 @@ export default function Department({
   return (
     <div>
       My Department: {params.department}
-      <QueryButton department={params.department} />
+      <QueryTestButton department={params.department} />
     </div>
   );
 }

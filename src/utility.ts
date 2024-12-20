@@ -10,7 +10,7 @@ export const fetchAllCoursesFromNTHU = async () => {
   }
   const courseListRaw: CourseRaw[] = await res.json();
 
-  //turn courseListRaw into Course[]
+  //turn CourseRaw[] into Course[]
   const courseList: Course[] = courseListRaw.map((item) => {
     return {
       courseID: item.科號,
