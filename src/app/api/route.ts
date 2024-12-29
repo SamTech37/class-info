@@ -3,10 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 // [WORKFLOW]
 // get the latest course list from NTHU
-// sanatize the data, in JSON formatx`x`
-// and create new api endpoint every semester
+// sanatize the data, in JSON format, e.g. fix with HTML decode, etc.
+// create new api endpoint every semester
 
-// [TODO] automate this process weekly, monthly, or every semester
+// [TODO] automate this process (weekly, monthly, or every semester)
 
 export async function GET(request: NextRequest) {
   // the actual GET request handler

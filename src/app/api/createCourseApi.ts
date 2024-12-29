@@ -5,6 +5,12 @@ import { isFiltersMatched } from "@/utility";
 
 // a generic function to create course API according to
 // course data of different semesters
+
+// data of different semesters:
+// https://curricul.site.nthu.edu.tw/p/406-1208-111356,r7883.php?Lang=zh-tw
+// data of latest semester:
+// https://www.ccxp.nthu.edu.tw/ccxp/INQUIRE/JH/OPENDATA/open_course_data.json
+
 export function createCourseListApiBySemester(courseListJson: any[]) {
   const defaultData: Course[] = courseListJson as Course[];
   const db = JSONSyncPreset<Course[]>("db.json", defaultData);
