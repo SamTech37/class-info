@@ -2,7 +2,11 @@
 "use client";
 
 import "@mantine/core/styles.css";
-import { MantineProvider, ColorSchemeScript } from "@mantine/core";
+import {
+  MantineProvider,
+  ColorSchemeScript,
+  mantineHtmlProps,
+} from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { AppShell, Burger, Group, Badge } from "@mantine/core";
 import NavLinks from "@/Components/NavLinks";
@@ -19,7 +23,7 @@ export default function RootLayout({
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
 
   return (
-    <html lang="zh">
+    <html lang="zh" {...mantineHtmlProps}>
       <head>
         <ColorSchemeScript />
         <title>{SITE.title}</title>
@@ -36,6 +40,10 @@ export default function RootLayout({
             }}
             padding="md"
           >
+            {/* 
+            /// [TODO]
+            /// refactor the AppShell to a new component
+            */}
             <AppShell.Header>
               <Group h="100%" px="md">
                 <Burger

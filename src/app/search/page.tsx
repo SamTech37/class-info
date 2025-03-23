@@ -17,7 +17,7 @@ async function getCourseList(query: QueryFilters) {
   for (const [key, value] of Object.entries(query)) {
     if (value != "") dynamicQueryURL += `${key}=${value}&`;
   }
-  console.error("fetching ", dynamicQueryURL);
+  // console.error("fetching ", dynamicQueryURL);
 
   const res = await fetch(dynamicQueryURL, { cache: "no-store" });
   //need to add options to the url

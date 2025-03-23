@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mantine/core": "^7.9.1",
-    "@mantine/form": "^7.9.1",
-    "@mantine/hooks": "^7.9.1",
+    "@mantine/core": "^7.17.2",
+    "@mantine/form": "^7.17.2",
+    "@mantine/hooks": "^7.17.2",
+    "install": "^0.13.0",
     "lowdb": "^6.1.1",
     "next": "^14.2.3",
+    "npm": "^11.2.0",
     "react": "^18",
     "react-dom": "^18"
   },
