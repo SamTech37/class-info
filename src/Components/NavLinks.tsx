@@ -7,10 +7,10 @@ type Tabs = {
 };
 
 const tabs: Tabs[] = [
-  { label: "搜尋", href: "/" },
+  { label: "欄位搜尋", href: "/" },
   { label: "查科號", href: "/course" },
-  { label: "目錄", href: "/catalog" },
-  { label: "關於", href: "/about" },
+  // { label: "目錄", href: "/catalog" },
+  // { label: "關於", href: "/about" },
 ];
 
 export default function NavLinks() {
