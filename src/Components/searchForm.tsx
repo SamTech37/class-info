@@ -89,7 +89,7 @@ export function SearchForm() {
             label="上課地點 Classroom"
             description={
               <Link href={referenceLinks.buildingCodes.URL}>
-                see "Building and Room Number"
+                {`see "Building and Room Number"`}
               </Link>
             }
             {...searchForm.getInputProps("venue")}

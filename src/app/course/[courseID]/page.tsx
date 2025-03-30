@@ -8,7 +8,7 @@ import { resourceURL } from "@/config";
 import type { Metadata } from "next";
 // Generate metadata using the same fetch function
 export async function generateMetadata(props: {
-  params: { courseID: string };
+  params: Promise<{ courseID: string }>;
 }): Promise<Metadata> {
   // Next.js will deduplicate this request if the same function is called in the page component
   const params = await props.params;
