@@ -42,10 +42,14 @@ export function createCourseIdApiBySemester(courseListJson: any[]) {
   // the actual GET request handler
   return async function GET(
     request: NextRequest,
-    context: { params: { courseID: string } }
+    //deconstructuring context of type NextApiContext
+    segmentData: {
+      params: Promise<{ courseID: string }>;
+    }
   ) {
+    const params = await segmentData.params;
     //trim whitespaces and convert to uppercase
-    const courseID = context.params.courseID.replace(/\s/g, "").toUpperCase();
+    const courseID = params.courseID.replace(/\s/g, "").toUpperCase();
     //find the course matching query
     const course = db.data.find(
       (course) => course.courseID.replace(/\s/g, "") === courseID

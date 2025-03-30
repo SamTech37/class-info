@@ -23,9 +23,12 @@ async function getCourseData(courseID: string) {
 export default async function CoursePage({
   params,
 }: {
-  params: { courseID: string };
+  params: Promise<{ courseID: string }>;
+  //params is a promise, need to await it
 }) {
-  const data: Course = await getCourseData(params.courseID);
+  //get courseID from params
+  const paramsObj = await params;
+  const data: Course = await getCourseData(paramsObj.courseID);
 
   return <CourseView courseData={data} />;
 }

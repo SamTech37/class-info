@@ -26,15 +26,13 @@ async function getCourseList(query: QueryFilters) {
   return res.json();
 }
 
-export default async function SearchResultPage({
-  searchParams,
-}: {
-  searchParams: QueryFilters;
+export default async function SearchResultPage(props: {
+  searchParams: Promise<QueryFilters>;
+  //searchParams have been made async in Next15
 }) {
-  const resultCourseList: Course[] = await getCourseList(searchParams);
-  const semester = searchParams.semester
-    ? searchParams.semester
-    : defaultSemester;
+  const params = await props.searchParams;
+  const resultCourseList: Course[] = await getCourseList(params);
+  const semester = params.semester ? params.semester : defaultSemester; //default to current semester
 
   return (
     <>
