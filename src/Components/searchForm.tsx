@@ -1,6 +1,7 @@
 //the form to search for courses
 
 "use client";
+import Link from "next/link";
 import {
   TextInput,
   Button,
@@ -9,13 +10,18 @@ import {
   NativeSelect,
   Autocomplete,
   LoadingOverlay,
+  Stack,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 
 import { useForm } from "@mantine/form";
-import jsonData from "./Departments.json";
 import { useRouter } from "next/navigation";
-import { availableSemesters, defaultSemester } from "@/config";
+import {
+  availableSemesters,
+  defaultSemester,
+  referenceLinks,
+  DepartmentList,
+} from "@/config";
 
 export function SearchForm() {
   const [isLoading, { toggle }] = useDisclosure(false);
@@ -38,12 +44,14 @@ export function SearchForm() {
     instructor: "",
     department: "",
     lang: "",
+    venue: "",
+    classTime: "", //TODO
   };
   const searchForm = useForm({
     initialValues,
     validate: {},
   });
-  const departmentList = jsonData;
+  const departmentList = DepartmentList;
 
   return (
     <Box maw={400} mx="auto" pos="relative">
@@ -54,33 +62,44 @@ export function SearchForm() {
       />
 
       <form onSubmit={searchForm.onSubmit(() => handleSubmit())}>
-        <NativeSelect
-          label="學期"
-          data={availableSemesters}
-          {...searchForm.getInputProps("semester")}
-        />
-        <NativeSelect
-          label="授課語言"
-          data={[
-            { label: "不限", value: "" },
-            { label: "中文", value: "ZH" },
-            { label: "English", value: "EN" },
-          ]}
-          {...searchForm.getInputProps("lang")}
-        />
-        <TextInput
-          label="課程名稱"
-          {...searchForm.getInputProps("courseName")}
-        />
-        <TextInput
-          label="授課教師"
-          {...searchForm.getInputProps("instructor")}
-        />
-        <Autocomplete
-          label="開課單位"
-          data={departmentList}
-          {...searchForm.getInputProps("department")}
-        />
+        <Stack gap="sm">
+          <NativeSelect
+            label="學期 Semester"
+            data={availableSemesters}
+            {...searchForm.getInputProps("semester")}
+          />
+          <NativeSelect
+            label="授課語言 Language"
+            data={[
+              { label: "不限", value: "" },
+              { label: "中文", value: "ZH" },
+              { label: "English", value: "EN" },
+            ]}
+            {...searchForm.getInputProps("lang")}
+          />
+          <TextInput
+            label="課程名稱 Course Name"
+            {...searchForm.getInputProps("courseName")}
+          />
+          <TextInput
+            label="授課教師 Instructor"
+            {...searchForm.getInputProps("instructor")}
+          />
+          <TextInput
+            label="上課地點 Classroom"
+            description={
+              <Link href={referenceLinks.buildingCodes.URL}>
+                see "Building and Room Number"
+              </Link>
+            }
+            {...searchForm.getInputProps("venue")}
+          />
+          <Autocomplete
+            label="開課單位 Department"
+            data={departmentList}
+            {...searchForm.getInputProps("department")}
+          />
+        </Stack>
 
         <Group justify="flex-end" mt="md">
           <Button type="submit">Submit</Button>

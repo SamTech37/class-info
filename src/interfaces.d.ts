@@ -92,7 +92,7 @@ type QueryFilters = {
   instructor?: string | null;
   courseName?: string | null;
   classTime?: string | null;
-  classVenue?: string | null;
+  venue?: string | null;
   lang?: "EN" | "ZH" | "" | null;
   //English, Chinese, or not specified
 };

@@ -1,6 +1,9 @@
 //general config of the site
 //and some data referenced in multiple places
 
+import departmentJson from "./../public/Departments.json";
+
+export const DepartmentList = departmentJson.codes;
 export const SITE: Site = {
   // replace this with your deployed domain
   websiteURL: "https://nthuccc.vercel.app",
@@ -55,6 +58,11 @@ export const referenceLinks: refLinks = {
     URL: "https://curricul.site.nthu.edu.tw/p/406-1208-166583,r9680.php",
     title: "認識清大科號",
   },
+  departmentCodes: {
+    URL: "https://curricul.site.nthu.edu.tw/p/406-1208-189767,r8789.php",
+    title: "系所代碼",
+  },
+
   buildingCodes: {
     URL: "https://curricul.site.nthu.edu.tw/p/406-1208-50862,r8507.php",
     title: "館舍代碼",

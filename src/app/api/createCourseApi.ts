@@ -18,14 +18,17 @@ export function createCourseListApiBySemester(courseListJson: any[]) {
   return async function GET(request: NextRequest) {
     // the actual GET request handler
     const searchParams = request.nextUrl.searchParams;
+
+    //extract query for URL parameters
     const filters: QueryFilters = {
       department: searchParams.get("department")?.toUpperCase(),
       instructor: searchParams.get("instructor")?.toUpperCase(),
       courseName: searchParams.get("courseName"),
       classTime: searchParams.get("classTime"),
+      venue: searchParams.get("venue"),
       lang: searchParams.get("lang")?.toUpperCase() as "EN" | "ZH" | undefined,
     };
-    console.error("filters of query", filters);
+    console.error("@API/CourseList filters of query", filters);
 
     const courseList = db.data.filter((course) =>
       isFiltersMatched(course, filters)

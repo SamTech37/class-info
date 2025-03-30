@@ -1,3 +1,5 @@
+// Utility functions for course data processing
+// turns CourseRaw[] from source into Course[] used in the app
 export const fetchAllCoursesFromNTHU = async () => {
   const resourceURL = `https://www.ccxp.nthu.edu.tw/ccxp/INQUIRE/JH/OPENDATA/open_course_data.json`;
   console.log(resourceURL);
@@ -57,10 +59,19 @@ export const fetchAllCoursesFromNTHU = async () => {
   return courseList;
 };
 
+function matchesQueryString(text: string, query: string): boolean {
+  return text.trim().toLowerCase().includes(query.trim().toLowerCase());
+}
+
 export function isFiltersMatched(
   course: Course,
   filters: QueryFilters
 ): boolean {
+  /*
+   * All string matching should be case-insensitive
+   * All string matching should be trimmed
+   */
+
   //straight return if filters is empty
   if (
     !filters.courseName &&
@@ -68,25 +79,32 @@ export function isFiltersMatched(
     !filters.department &&
     !filters.semester &&
     !filters.classTime &&
-    !filters.classVenue &&
+    !filters.venue &&
     !filters.lang
   ) {
     return true;
   }
 
   //match department
-  if (filters.department && course.department !== filters.department) {
-    return false;
+  if (filters.department) {
+    const departmentIncluded =
+      course.department.toLowerCase() == filters.department.toLowerCase();
+    //strict match, not includes()
+    //because department is a code, not a string
+    // e.g. "EC" and "ECON" should not be matched
+    if (!departmentIncluded) {
+      return false;
+    }
   }
 
   //match instructors' names with the query keyword
   if (filters.instructor) {
     const instructorIncluded =
-      course.instructorNamesEN.some((instructor: string) =>
-        instructor.includes(filters.instructor as string)
+      course.instructorNamesEN.some((instructor) =>
+        matchesQueryString(instructor, filters.instructor as string)
       ) ||
-      course.instructorNamesZH.some((instructor: string) =>
-        instructor.includes(filters.instructor as string)
+      course.instructorNamesZH.some((instructor) =>
+        matchesQueryString(instructor, filters.instructor as string)
       );
 
     if (!instructorIncluded) {
@@ -97,8 +115,8 @@ export function isFiltersMatched(
   // match course name with the query keyword
   if (filters.courseName) {
     const courseNameIncluded =
-      course.nameEN.toLowerCase().includes(filters.courseName.toLowerCase()) ||
-      course.nameZH.toLowerCase().includes(filters.courseName.toLowerCase());
+      matchesQueryString(course.nameEN, filters.courseName) ||
+      matchesQueryString(course.nameZH, filters.courseName);
 
     if (!courseNameIncluded) {
       return false;
@@ -113,7 +131,29 @@ export function isFiltersMatched(
     }
   }
 
-  //TODO: match class time with the query keyword
+  // Match class time with the query keyword
+  if (filters.classTime) {
+    const classTimeIncluded = course.classTime.some((time) =>
+      matchesQueryString(time, filters.classTime as string)
+    );
 
+    if (!classTimeIncluded) {
+      return false;
+    }
+  }
+
+  //match class venue with the query keyword
+  if (filters.venue) {
+    const classVenueIncluded = matchesQueryString(
+      course.classroom.join(" "),
+      filters.venue
+    );
+
+    if (!classVenueIncluded) {
+      return false;
+    }
+  }
+
+  //passed all filters, return true
   return true;
 }
