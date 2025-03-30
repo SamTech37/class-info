@@ -5,6 +5,19 @@
 import { notFound } from "next/navigation";
 import { CourseView } from "@/Components/CourseView";
 import { resourceURL } from "@/config";
+import type { Metadata } from "next";
+// Generate metadata using the same fetch function
+export async function generateMetadata(props: {
+  params: { courseID: string };
+}): Promise<Metadata> {
+  // Next.js will deduplicate this request if the same function is called in the page component
+  const params = await props.params;
+
+  return {
+    title: `${params.courseID} - Course Info | NTHUCCC`,
+    description: `Course details for ${params.courseID}`,
+  };
+}
 
 async function getCourseData(courseID: string) {
   //remove all whitespace
@@ -19,6 +32,7 @@ async function getCourseData(courseID: string) {
   }
   return res.json();
 }
+// also get related course entries
 
 export default async function CoursePage({
   params,

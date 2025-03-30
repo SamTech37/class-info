@@ -9,7 +9,14 @@ import { resourceURL, defaultSemester } from "@/config";
 import { Divider } from "@mantine/core";
 import { SearchForm } from "@/Components/searchForm";
 
-//TODO: refactor this mess
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "NTHUCCC - Query Results",
+};
+
+// it works, and it's not too bad
+// but it could be better
 async function getCourseList(query: QueryFilters) {
   let dynamicQueryURL = `${resourceURL}/api/${
     query.semester ? query.semester : defaultSemester
