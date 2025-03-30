@@ -43,6 +43,14 @@ type refLinks = {
   [key: string]: linkFromNTHU;
 };
 export const referenceLinks: refLinks = {
+  DivisionOfCirriculumHomepage: {
+    URL: "https://curricul.site.nthu.edu.tw/",
+    title: "清大課務組",
+  },
+  DoCMainNotices: {
+    URL: "https://curricul.site.nthu.edu.tw/p/403-1208-8507-1.php?Lang=zh-tw",
+    title: "認識科號、節次、開課學分規定",
+  },
   courseIDRef: {
     URL: "https://curricul.site.nthu.edu.tw/p/406-1208-166583,r9680.php",
     title: "認識清大科號",
@@ -54,6 +62,15 @@ export const referenceLinks: refLinks = {
   GEObjectRef: {
     URL: "https://curricul.site.nthu.edu.tw/p/404-1208-11133.php",
     title: "通識課程選課對象",
+  },
+  NTHUCourseOpendata: {
+    URL: "https://curricul.site.nthu.edu.tw/p/406-1208-111356,r7883.php?Lang=zh-tw",
+    title: "清大課程開放資料（本站資料來源）",
+  },
+
+  NTHULabook: {
+    URL: "https://nthulabook.onrender.com/",
+    title: "Labook 清大研究所畢業論文與畢業時長統計",
   },
 };
 

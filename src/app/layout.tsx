@@ -8,7 +8,7 @@ import {
   mantineHtmlProps,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { AppShell, Burger, Group, Badge } from "@mantine/core";
+import { AppShell, Burger, Group, Badge, Container } from "@mantine/core";
 import NavLinks from "@/Components/NavLinks";
 import Link from "next/link";
 
@@ -69,7 +69,9 @@ export default function RootLayout({
               </AppShell.Section>
               <AppShell.Section>{SITE.caveats}</AppShell.Section>
             </AppShell.Navbar>
-            <AppShell.Main>{children}</AppShell.Main>
+            <AppShell.Main>
+              <Container>{children}</Container>
+            </AppShell.Main>
           </AppShell>
         </MantineProvider>
       </body>

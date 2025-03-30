@@ -1,4 +1,6 @@
 "use client";
+
+//this page is currently not used
 import { QueryTestButton } from "@/Components/QueryTestingButton";
 import { use } from "react";
 

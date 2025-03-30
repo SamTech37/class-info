@@ -4,8 +4,7 @@
 import { Table, Button, Badge } from "@mantine/core";
 import Link from "next/link";
 import React from "react";
-import { GEObjectDecorColors } from "@/config";
-import { defaultSemester } from "@/config";
+import { GEObjectDecorColors, defaultSemester } from "@/config";
 
 const tableHearder = [
   "科號",

@@ -9,6 +9,7 @@ type Tabs = {
 const tabs: Tabs[] = [
   { label: "欄位搜尋", href: "/" },
   { label: "查科號", href: "/course" },
+  { label: "實用連結", href: "/useful-links" },
   // { label: "目錄", href: "/catalog" },
   // { label: "關於", href: "/about" },
 ];
