@@ -1,4 +1,56 @@
 //ref: https://curricul.site.nthu.edu.tw/p/406-1208-111356,r7883.php?Lang=zh-tw
+
+/*
+better design
+or check out [Zod](https://zod.dev/) for schema validation
+interface Course {
+  // 若還是想保留整串科號也可以放在這裡
+  fullCourseID: string; // e.g. "11320PHYS541000"
+
+  // 拆解後的課程代碼資訊
+  code: {
+    academicYear: number;    // e.g. 113
+    semester: number;        // e.g. 2
+    departmentCode: string;  // e.g. "PHYS"
+    courseNumber: string;    // e.g. "5410"
+    classNumber: string;     // e.g. "00"
+  };
+
+  department: string;  // 系所中文名或代號 (若需要中文/英文可再拆開)
+  nameZH: string;      // 課程中文名稱
+  nameEN: string;      // 課程英文名稱
+  credits: number;     // 學分數
+
+  // 若想支援多人授課，建議用陣列或關聯表
+  instructors: {
+    nameZH: string;
+    nameEN: string;
+  }[];
+
+  // 時間與地點也可用更結構化的格式
+  schedule: {
+    dayOfWeek: number;      // 1=週一, 2=週二, ...
+    startPeriod: number;
+    endPeriod: number;
+    classroom: string;
+  }[];
+
+  enrollmentLimit?: number;   // 用 number? 表示可能為空
+  freshmanReservedSeats?: number;
+  GEObject?: string;
+  GECategory?: string;
+  languageOfLecture?: "Chinese" | "English";
+  suspensionStatus?: "停開" | ""; // 也可用 boolean
+  remarks?: string;
+  prerequisites?: string;
+  courseRestrictions?: string;
+  expertises?: string[];
+  creditPrograms?: string[];
+  noExtraEnrollmentDescription?: string;
+  requiredOrOptionalFor?: string[];
+}
+*/
+
 interface Course {
   courseID: string; // 科號
   department: string; //系所

@@ -51,11 +51,11 @@ export function createCourseIdApiBySemester(courseListJson: any[]) {
     }
   ) {
     const params = await segmentData.params;
-    //trim whitespaces and convert to uppercase
-    const courseID = params.courseID.replace(/\s/g, "").toUpperCase();
+    //remove all whitespaces and convert to uppercase
+    const qCourseID = params.courseID.replace(/\s/g, "").toUpperCase();
     //find the course matching query
     const course = db.data.find(
-      (course) => course.courseID.replace(/\s/g, "") === courseID
+      (course) => course.courseID.replace(/\s/g, "") === qCourseID
     );
     if (!course) {
       //return 404 if course not found
