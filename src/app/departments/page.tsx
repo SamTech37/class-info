@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { ScrollArea, Stack, NavLink } from "@mantine/core";
-import jsonData from "./Departments.json";
+import { ScrollArea, Stack, NavLink, Title } from "@mantine/core";
+import { DepartmentList } from "@/config";
 
 export default function Home() {
-  const departments = jsonData;
+  const departments = DepartmentList;
 
   return (
     <>
-      Departments
+      <Title order={1}>Departments</Title>
       <ScrollArea h="60vh" type="always">
         <Stack>
           {departments.map((dep, index) => (

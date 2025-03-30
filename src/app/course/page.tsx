@@ -3,16 +3,19 @@
 import { Title } from "@mantine/core";
 import CourseIDForm from "@/Components/CourseIdForm";
 
-import { Metadata } from "next";
+import { SITE } from "@/config";
 
-export const metadata: Metadata = {
-  title: "NTHUCCC - Search by Course ID",
-};
+import { generateMetadata } from "@/utility"; // Correct import path
+
+const pageTitle = "搜尋科號 Search by Course ID";
+export const metadata = generateMetadata(pageTitle, "Search courses of NTHU");
 
 export default function Home() {
   return (
     <>
-      <Title mb="xs">搜尋科號</Title>
+      <Title order={2} mb="md">
+        {pageTitle}
+      </Title>
       <CourseIDForm />
     </>
   );

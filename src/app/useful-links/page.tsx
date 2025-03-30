@@ -1,19 +1,16 @@
 import { Container, Title } from "@mantine/core";
 import { UsefulLinksList } from "@/Components/UsefulLinksList";
 
-import { Metadata } from "next";
+import { generateMetadata } from "@/utility"; // Correct import path
 
-export const metadata: Metadata = {
-  title: "NTHUCCC - Useful Links",
-};
+const pageTitle = "實用連結 Useful Links";
+export const metadata = generateMetadata(pageTitle, "Search courses of NTHU");
 
 export default function ReferenceLinkPage() {
-  //get courseID from params
-
   return (
     <Container>
-      <Title order={1} mb="md">
-        實用連結
+      <Title order={2} mb="md">
+        {pageTitle}
       </Title>
       <UsefulLinksList />
     </Container>

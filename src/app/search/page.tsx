@@ -6,7 +6,7 @@
 import GoBackButton from "@/Components/GoBackButton";
 import { SearchResults } from "@/Components/SearchResults";
 import { resourceURL, defaultSemester } from "@/config";
-import { Divider } from "@mantine/core";
+import { Divider, Title } from "@mantine/core";
 import { SearchForm } from "@/Components/searchForm";
 
 import { Metadata } from "next";
@@ -44,7 +44,10 @@ export default async function SearchResultPage(props: {
   return (
     <>
       <GoBackButton />
-      <h1>{`${semester + " 學期"}總共 ${resultCourseList.length} 筆符合`}</h1>
+
+      <Title order={2} mb="md">
+        {`${semester + " 學期"}總共 ${resultCourseList.length} 筆符合`}
+      </Title>
       {
         //<SearchForm />
         //could use a differ layout

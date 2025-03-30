@@ -157,3 +157,16 @@ export function isFiltersMatched(
   //passed all filters, return true
   return true;
 }
+
+import { SITE } from "@/config";
+import { Metadata } from "next";
+
+export function generateMetadata(
+  pageTitle: string,
+  description?: string
+): Metadata {
+  return {
+    title: `${SITE.title} | ${pageTitle}`,
+    description: description || SITE.desc || "Default description",
+  };
+}
