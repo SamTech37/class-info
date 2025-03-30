@@ -1,5 +1,5 @@
 //general config of the site
-//and some data that is used in multiple places
+//and some data referenced in multiple places
 
 export const SITE: Site = {
   // replace this with your deployed domain
@@ -9,7 +9,7 @@ export const SITE: Site = {
   title: "NTHUCCC",
   ogImage: "og-image.png",
   hashTag: "NTHUCCC",
-  lightAndDarkMode: false, // make it only darkmode
+  lightAndDarkMode: false, // darkmode only
   caveats: `This site is NOT endorsed by NTHU.\nWe provide the data "as is".`,
 };
 
@@ -57,7 +57,7 @@ export const referenceLinks: refLinks = {
   },
 };
 
-export const GEObjectColors = {
+export const GEObjectDecorColors = {
   type1: { from: "violet", to: "yellow", deg: 90 },
   type3: { from: "cyan", to: "green", deg: 90 },
   type7: { from: "red", to: "cyan", deg: 90 },

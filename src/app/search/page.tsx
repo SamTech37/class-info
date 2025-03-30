@@ -7,13 +7,15 @@ import GoBackButton from "@/Components/GoBackButton";
 import { SearchResults } from "@/Components/SearchResults";
 import { resourceURL, defaultSemester } from "@/config";
 import { Divider } from "@mantine/core";
+import { SearchForm } from "@/Components/searchForm";
 
 //TODO: refactor this mess
 async function getCourseList(query: QueryFilters) {
   let dynamicQueryURL = `${resourceURL}/api/${
     query.semester ? query.semester : defaultSemester
   }?`;
-  //for keys in query, add to resourceURL
+
+  //add each entries in filterQuery to resourceURL as query parameters
   for (const [key, value] of Object.entries(query)) {
     if (value != "") dynamicQueryURL += `${key}=${value}&`;
   }
@@ -29,12 +31,22 @@ export default async function SearchResultPage({
 }: {
   searchParams: QueryFilters;
 }) {
-  const courseList: Course[] = await getCourseList(searchParams);
+  const resultCourseList: Course[] = await getCourseList(searchParams);
+  const semester = searchParams.semester
+    ? searchParams.semester
+    : defaultSemester;
+
   return (
     <>
       <GoBackButton />
-      <h1>{`Search Result of `}</h1>
-      <SearchResults courseList={courseList} />
+      <h1>{`${semester + " 學期"}總共 ${resultCourseList.length} 筆符合`}</h1>
+      {
+        //<SearchForm />
+        //could use a differ layout
+        //or just make it collapsible
+        //add a filter icon here
+      }
+      <SearchResults courseList={resultCourseList} />
       <Divider my="md" />
       <GoBackButton />
     </>

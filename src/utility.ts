@@ -61,6 +61,19 @@ export function isFiltersMatched(
   course: Course,
   filters: QueryFilters
 ): boolean {
+  //straight return if filters is empty
+  if (
+    !filters.courseName &&
+    !filters.instructor &&
+    !filters.department &&
+    !filters.semester &&
+    !filters.classTime &&
+    !filters.classVenue &&
+    !filters.lang
+  ) {
+    return true;
+  }
+
   //match department
   if (filters.department && course.department !== filters.department) {
     return false;
