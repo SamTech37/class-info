@@ -2,8 +2,10 @@
 //and some data referenced in multiple places
 
 import departmentJson from "./../public/Departments.json";
+import venueJson from "./../public/Venues.json";
 
 export const DepartmentList = departmentJson.codes;
+export const VenueList = venueJson.buildings.map((venue) => venue.code);
 export const SITE: Site = {
   // replace this with your deployed domain
   websiteURL: "https://nthuccc.vercel.app",

@@ -1,0 +1,179 @@
+{
+  "buildings": [
+    {
+      "code": "BMES醫環",
+      "chinese": "生醫工程及環境科學館",
+      "english": "Biomedical Engineering and Environmental Sciences Building"
+    },
+    {
+      "code": "CC計中",
+      "chinese": "第二綜合大樓(計通中心)",
+      "english": "General Building II (Computer & Communication Center)"
+    },
+    {
+      "code": "CHE化工",
+      "chinese": "化工館",
+      "english": "Chemical Engineering Building"
+    },
+    {
+      "code": "CHEM化",
+      "chinese": "化學館",
+      "english": "Chemistry Building"
+    },
+    {
+      "code": "CHEM II化二",
+      "chinese": "動機化學實驗館(化學二館)",
+      "english": "Chemistry and Power Mechanical Engineering Building"
+    },
+    {
+      "code": "CII育成",
+      "chinese": "創新育成中心",
+      "english": "Innovative Incubation Center"
+    },
+    {
+      "code": "Counsel 諮商",
+      "chinese": "醫輔中心",
+      "english": "Clinic and Counseling Center"
+    },
+    {
+      "code": "DELTA 台達",
+      "chinese": "台達館",
+      "english": "Delta Building"
+    },
+    {
+      "code": "D-Ren 仁齋",
+      "chinese": "仁齋",
+      "english": "Dormitory Ren"
+    },
+    {
+      "code": "D-Shi 實齋",
+      "chinese": "實齋",
+      "english": "Dormitory Shi"
+    },
+    {
+      "code": "EDU 教",
+      "chinese": "教育館",
+      "english": "Education Building"
+    },
+    {
+      "code": "EECS資電",
+      "chinese": "資訊電機館(113學年度起更名為劉炯朗館)",
+      "english": "Electrical Engineering and Computer Science Building"
+    },
+    {
+      "code": "C.L.Liu炯朗",
+      "chinese": "劉炯朗館",
+      "english": "C.L.Liu Building"
+    },
+    {
+      "code": "ENG I 工一",
+      "chinese": "工程一館",
+      "english": "Engineering Building I"
+    },
+    {
+      "code": "ESS 工科",
+      "chinese": "工科館",
+      "english": "Engineering and System Science Building"
+    },
+    {
+      "code": "GEN I 綜一",
+      "chinese": "第一綜合大樓",
+      "english": "General Building I"
+    },
+    {
+      "code": "GEN II 綜二",
+      "chinese": "第二綜合大樓",
+      "english": "General Building II"
+    },
+    {
+      "code": "GEN III 綜三",
+      "chinese": "第三綜合大樓",
+      "english": "General Building III"
+    },
+    {
+      "code": "GEN IV 綜四",
+      "chinese": "第四綜合大樓",
+      "english": "General Building IV"
+    },
+    {
+      "code": "HSS 人社",
+      "chinese": "人文社會學院",
+      "english": "Humanities and Social Sciences Building"
+    },
+    {
+      "code": "LS I  生一",
+      "chinese": "生命科學一館",
+      "english": "Life Science Building I"
+    },
+    {
+      "code": "LS II 生二",
+      "chinese": "生命科學二館",
+      "english": "Life Science Building II"
+    },
+    {
+      "code": "LTM 綠能",
+      "chinese": "綠能大樓(李存敏館)",
+      "english": "Lee Tsen Min Building"
+    },
+    {
+      "code": "MS 材料",
+      "chinese": "材料科技館",
+      "english": "Materials Science and Technology Building"
+    },
+    {
+      "code": "MSLAB 材實",
+      "chinese": "材料實驗館",
+      "english": "Materials Science Laboratory"
+    },
+    {
+      "code": "MXIC 旺宏",
+      "chinese": "旺宏館(學習資源中心)",
+      "english": "MXIC Building(Learning Resource Center)"
+    },
+    {
+      "code": "NTHU Lab 清實",
+      "chinese": "清華實驗室",
+      "english": "Tsing Hua Laboratory"
+    },
+    {
+      "code": "PHYS 物",
+      "chinese": "物理館",
+      "english": "Physics Building"
+    },
+    {
+      "code": "PHYSLAB 普實",
+      "chinese": "普物實驗館",
+      "english": "Physics Laboratory"
+    },
+    {
+      "code": "STC 蒙民",
+      "chinese": "學生活動中心",
+      "english": "Student Union"
+    },
+    {
+      "code": "TSMC 台積",
+      "chinese": "台積館",
+      "english": "TSMC Building"
+    },
+    {
+      "code": "COE教院",
+      "chinese": "竹師教育學院大樓",
+      "english": "College of Education Building"
+    },
+    {
+      "code": "SINICA 中研院",
+      "chinese": "北市南港區中研院",
+      "english": "Academia Sinica"
+    },
+    {
+      "code": "Nanda 南大",
+      "chinese": "南大校區",
+      "english": "Nanda Campus"
+    },
+    {
+      "code": "VC 虛擬教室",
+      "chinese": "虛擬教室",
+      "english": "Virtual Classroom"
+    }
+  ]
+}

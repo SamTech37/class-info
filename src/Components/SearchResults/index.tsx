@@ -1,10 +1,12 @@
 // Display search results in a table
+// needs refactoring
 
 "use client";
-import { Table, Button, Badge } from "@mantine/core";
+import { Table, Button, Badge, Code, Text } from "@mantine/core";
 import Link from "next/link";
 import React from "react";
 import { GEObjectDecorColors, defaultSemester } from "@/config";
+import StyledLink from "@/Components/StyledLink";
 
 const tableHearder = [
   "科號",
@@ -38,17 +40,21 @@ export function SearchResults({ courseList }: { courseList: Course[] }) {
           </CourseNameBadge>
         </Table.Td>
         <Table.Td>
-          <strong>{course.credits}</strong>
+          <Text size="xl" fw={900}>
+            {course.credits}
+          </Text>
         </Table.Td>
         <Table.Td>
           {course.instructorNamesZH.map((instructor, index) => (
             // link to instructor page
-            <Link
+
+            <StyledLink
               key={index}
               href={`/search?semester=${defaultSemester}&instructor=${instructor}`}
+              underline="hover"
             >
               <div>{instructor}</div>
-            </Link>
+            </StyledLink>
           ))}
         </Table.Td>
         <Table.Td>

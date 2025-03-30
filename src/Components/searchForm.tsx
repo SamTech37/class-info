@@ -1,7 +1,6 @@
 //the form to search for courses
 
 "use client";
-import Link from "next/link";
 import {
   TextInput,
   Button,
@@ -14,6 +13,7 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 
+import StyledLink from "./StyledLink";
 import { useForm } from "@mantine/form";
 import { useRouter } from "next/navigation";
 import {
@@ -21,6 +21,7 @@ import {
   defaultSemester,
   referenceLinks,
   DepartmentList,
+  VenueList,
 } from "@/config";
 
 export function SearchForm() {
@@ -51,7 +52,10 @@ export function SearchForm() {
     initialValues,
     validate: {},
   });
+
+  //for autocomplete input
   const departmentList = DepartmentList;
+  const venueList = VenueList;
 
   return (
     <Box maw={400} mx="auto" pos="relative">
@@ -85,18 +89,32 @@ export function SearchForm() {
             label="授課教師 Instructor"
             {...searchForm.getInputProps("instructor")}
           />
-          <TextInput
+          <Autocomplete
             label="上課地點 Classroom"
+            data={venueList}
             description={
-              <Link href={referenceLinks.buildingCodes.URL}>
+              <StyledLink
+                href={referenceLinks.buildingCodes.URL}
+                size="xs"
+                c="teal"
+              >
                 {`see "Building and Room Number"`}
-              </Link>
+              </StyledLink>
             }
             {...searchForm.getInputProps("venue")}
           />
           <Autocomplete
             label="開課單位 Department"
             data={departmentList}
+            description={
+              <StyledLink
+                href={referenceLinks.departmentCodes.URL}
+                size="xs"
+                c="teal"
+              >
+                {`see "Dept. Codes"`}
+              </StyledLink>
+            }
             {...searchForm.getInputProps("department")}
           />
         </Stack>

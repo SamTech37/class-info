@@ -60,7 +60,13 @@ export const fetchAllCoursesFromNTHU = async () => {
 };
 
 function matchesQueryString(text: string, query: string): boolean {
-  return text.trim().toLowerCase().includes(query.trim().toLowerCase());
+  return (
+    text.trim().toLowerCase().includes(query.trim().toLowerCase()) ||
+    text
+      .replace(/\s+/g, "") //whitespaces in between words might be an issue
+      .toLowerCase()
+      .includes(query.replace(/\s+/g, "").toLowerCase())
+  );
 }
 
 export function isFiltersMatched(
@@ -145,7 +151,7 @@ export function isFiltersMatched(
   //match class venue with the query keyword
   if (filters.venue) {
     const classVenueIncluded = matchesQueryString(
-      course.classroom.join(" "),
+      course.classroom.join(""),
       filters.venue
     );
 
