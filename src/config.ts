@@ -31,7 +31,7 @@ export const availableSemesters = [
   { label: "113上", value: "11310" },
   { label: "113下", value: "11320" },
   // { label: "113暑", value: "11330" },
-  // { label: "114上", value: "11410" },
+  { label: "114上", value: "11410" },
   // { label: "114下", value: "11420" },
   // { label: "114暑", value: "11430" },
   // { label: "115上", value: "11510" },
