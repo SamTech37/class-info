@@ -96,3 +96,11 @@ type QueryFilters = {
   lang?: "EN" | "ZH" | "" | null;
   //English, Chinese, or not specified
 };
+
+type linkFromNTHU = {
+  URL: string;
+  title: string;
+};
+type refLinks = {
+  [key: string]: linkFromNTHU;
+};

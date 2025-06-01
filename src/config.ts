@@ -40,13 +40,6 @@ export const availableSemesters = [
 export const defaultSemester =
   availableSemesters[availableSemesters.length - 1].value;
 
-type linkFromNTHU = {
-  URL: string;
-  title: string;
-};
-type refLinks = {
-  [key: string]: linkFromNTHU;
-};
 export const referenceLinks: refLinks = {
   DivisionOfCirriculumHomepage: {
     URL: "https://curricul.site.nthu.edu.tw/",
@@ -61,7 +54,7 @@ export const referenceLinks: refLinks = {
     title: "認識清大科號",
   },
   departmentCodes: {
-    URL: "https://curricul.site.nthu.edu.tw/p/406-1208-189767,r8789.php",
+    URL: "https://curricul.site.nthu.edu.tw/p/406-1208-189767,r8507.php",
     title: "系所代碼",
   },
 
